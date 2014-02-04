@@ -12,7 +12,7 @@ RUN yum install -y ncurses-devel
 ADD install-zsh.sh /usr/local/src/install-zsh.sh
 RUN chmod +x /usr/local/src/install-zsh.sh; /usr/local/src/install-zsh.sh |& tee /usr/local/src/install-zsh.log
 
-RUN yum -y install gcc make zlib zlib-devel readline readline-devel openssl openssl-devel curl curl-devel
+RUN yum -y install gcc gcc-c++ make zlib zlib-devel readline readline-devel openssl openssl-devel curl curl-devel
 ADD install-rails.sh /usr/local/src/install-rails.sh
 RUN chmod +x /usr/local/src/install-rails.sh; /usr/local/src/install-rails.sh |& tee /usr/local/src/install-rails.log
 
