@@ -5,7 +5,7 @@ Docker recipe for CentOS + git + zsh + openssh.
 
 To build,
 ```
-docker build -q .
+docker build -q -t mad-p/centos-rails .
 ```
  * Note:
    * `-q` to avoid Golang's http chunk bug
