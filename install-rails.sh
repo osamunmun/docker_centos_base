@@ -25,7 +25,7 @@ if [ ! -d /usr/local/rbenv ];then
     chown -R rbenv:rbenv rbenv
     chmod -R 775 rbenv
 
-    # install withou ri,rdoc
+    # install without ri,rdoc
     echo 'install: --no-ri --no-rdoc' >> /etc/.gemrc
     echo 'update: --no-ri --no-rdoc' >> /etc/.gemrc
     echo 'install: --no-ri --no-rdoc' >> /.gemrc
