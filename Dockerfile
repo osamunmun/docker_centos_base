@@ -2,6 +2,9 @@ FROM centos
 
 MAINTAINER Kaoru Maeda <kaoru.maeda@gmail.com> mad-p
 
+RUN echo include_only=.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
+RUN echo prefer=ftp.iij.ad.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
+
 RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo
 
 RUN yum install -y zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
