@@ -4,7 +4,7 @@ zsh_version=5.0.5
 
 echo "Downloading zsh-$zsh_version"
 cd /usr/local/src
-wget -O zsh-$zsh_version.tar.bz2 http://sourceforge.net/projects/zsh/files/zsh/$zsh_version/zsh-$zsh_version.tar.bz2/download
+wget --progress=bar:force -O zsh-$zsh_version.tar.bz2 http://sourceforge.net/projects/zsh/files/zsh/$zsh_version/zsh-$zsh_version.tar.bz2/download
 tar -jxvf ./zsh-$zsh_version.tar.bz2
 
 echo "Compiling zsh-$zsh_version"

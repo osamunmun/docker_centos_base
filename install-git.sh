@@ -5,7 +5,7 @@ git_version=1.8.5.3
 
 echo "Downloading git-$git_version"
 cd /usr/local/src
-wget -O git-v$git_version.tar.gz https://github.com/git/git/archive/v$git_version.tar.gz
+wget --progress=bar:force -O git-v$git_version.tar.gz https://github.com/git/git/archive/v$git_version.tar.gz
 tar -xzvf ./git-v$git_version.tar.gz
 
 echo "Compiling git-$git_version"
