@@ -1,7 +1,7 @@
 #!/bin/bash
 #Install rbenv and rails
 
-ruby_version=2.0.0-p353
+ruby_version=2.2.0
 
 if [ ! -d /usr/local/rbenv ];then
     cd /usr/local
@@ -31,7 +31,7 @@ if [ ! -d /usr/local/rbenv ];then
     echo 'install: --no-ri --no-rdoc' >> /.gemrc
     echo 'update: --no-ri --no-rdoc' >> /.gemrc
 
-    # install bundler and rails
-    gem install bundler rails
+    # install bundler
+    gem install bundler
     rbenv rehash
 fi
