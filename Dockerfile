@@ -1,6 +1,6 @@
-FROM centos
+FROM centos:7
 
-MAINTAINER Kaoru Maeda <kaoru.maeda@gmail.com> mad-p
+MAINTAINER osamunmun
 
 RUN echo include_only=.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 RUN echo prefer=ftp.iij.ad.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
@@ -9,14 +9,25 @@ RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients
 
 RUN yum install -y zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 ADD install-git.sh /usr/local/src/install-git.sh
-RUN chmod +x /usr/local/src/install-git.sh; /usr/local/src/install-git.sh |& tee /usr/local/src/install-git.log
-
-RUN yum install -y ncurses-devel
-ADD install-zsh.sh /usr/local/src/install-zsh.sh
-RUN chmod +x /usr/local/src/install-zsh.sh; /usr/local/src/install-zsh.sh |& tee /usr/local/src/install-zsh.log
+RUN chmod +x /usr/local/src/install-git.sh
+RUN /usr/local/src/install-git.sh
 
 RUN yum -y install gcc gcc-c++ make zlib zlib-devel readline readline-devel openssl openssl-devel curl curl-devel
-ADD install-rails.sh /usr/local/src/install-rails.sh
-RUN chmod +x /usr/local/src/install-rails.sh; /usr/local/src/install-rails.sh |& tee /usr/local/src/install-rails.log
+ADD install-rbenv.sh /usr/local/src/install-rbenv.sh
+RUN chmod +x /usr/local/src/install-rbenv.sh
+RUN /usr/local/src/install-rbenv.sh
 
-EXPOSE 2222
+RUN yum install -y ncurses-devel bzip2
+ADD install-zsh.sh /usr/local/src/install-zsh.sh
+RUN chmod +x /usr/local/src/install-zsh.sh
+RUN /usr/local/src/install-zsh.sh
+
+RUN useradd -m osamunmun
+RUN echo 'osamunmun:password' | chpasswd
+RUN echo 'osamunmun ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/osamunmun
+
+RUN /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ""
+RUN /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
+RUN /usr/bin/ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""
+
+EXPOSE 22 3000

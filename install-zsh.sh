@@ -1,6 +1,6 @@
 #!/bin/sh
 
-zsh_version=5.0.5
+zsh_version=5.0.7
 
 echo "Downloading zsh-$zsh_version"
 cd /usr/local/src
@@ -12,7 +12,8 @@ cd zsh-$zsh_version/
 ./configure --prefix=/usr --with-tcsetpgrp
 make -j 2
 make install
-echo /usr/bin/zsh >> /etc/shells
+echo /bin/zsh >> /etc/shells
+echo 'password' | chsh -s /bin/zsh osamunmun
 
 echo "Cleaning up"
 cd /usr/local/src
