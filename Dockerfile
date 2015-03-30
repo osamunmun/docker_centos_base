@@ -18,13 +18,12 @@ RUN chmod +x /usr/local/src/install-rbenv.sh
 RUN /usr/local/src/install-rbenv.sh
 
 RUN yum install -y ncurses-devel bzip2
-ADD install-zsh.sh /usr/local/src/install-zsh.sh
-RUN chmod +x /usr/local/src/install-zsh.sh
-RUN /usr/local/src/install-zsh.sh
+RUN yum install -y zsh
 
 RUN useradd -m osamunmun
 RUN echo 'osamunmun:password' | chpasswd
 RUN echo 'osamunmun ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/osamunmun
+RUN echo 'password' | chsh -s /bin/zsh osamunmun
 
 RUN /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ""
 RUN /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
