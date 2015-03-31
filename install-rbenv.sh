@@ -1,7 +1,7 @@
 #!/bin/bash
 #Install rbenv
 
-ruby_version=2.2.0
+ruby_version=2.2.1
 
 if [ ! -d /usr/local/rbenv ];then
     cd /usr/local

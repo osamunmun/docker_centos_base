@@ -6,11 +6,7 @@ RUN echo include_only=.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 RUN echo prefer=ftp.iij.ad.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 
 #Install yum libs
-RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo man
-RUN yum install -y zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel
-RUN yum install -y gcc gcc-c++ make zlib zlib-devel readline readline-devel openssl openssl-devel curl curl-devel
-RUN yum install -y ncurses-devel bzip2
-RUN yum install -y zsh
+RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo man zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel gcc-c++ zlib readline readline-devel openssl ncurses-devel bzip2 zsh libyaml-devel libffi-devel gdbm-devel
 
 #Install git
 ADD install-git.sh /usr/local/src/install-git.sh
