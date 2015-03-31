@@ -1,5 +1,5 @@
 #!/bin/bash
-#Install rbenv and rails
+#Install rbenv
 
 ruby_version=2.2.0
 

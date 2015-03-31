@@ -25,6 +25,10 @@ RUN echo 'osamunmun:password' | chpasswd
 RUN echo 'osamunmun ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/osamunmun
 RUN echo 'password' | chsh -s /bin/zsh osamunmun
 
+ADD setup-dotfiles.sh /usr/local/src/setup-dotfiles.sh
+RUN chmod +x /usr/local/src/setup-dotfiles.sh
+RUN /usr/local/src/setup-dotfiles.sh
+
 RUN /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ""
 RUN /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
 RUN /usr/bin/ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""
