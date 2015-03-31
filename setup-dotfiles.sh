@@ -2,17 +2,13 @@
 
 echo "Clone osamunmun/dotfiles"
 cd /home/osamunmun
-git clone https://github.com/osamunmun/dotfiles.git
+git clone https://github.com/osamunmun/dotfiles.git .dotfiles
 
-mkdir .dotfiles
 cd .dotfiles
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git
 
 echo "Make sysmlink"
-ln -sf ./dotfiles/vim/vimfiles /home/osamunmun/.vim
-ln -sf ./dotfiles/vim/_vimrc /home/osamunmun/.vimrc
-ln -sf ./dotfiles/zshrc /home/osamunmun/.zshrc
-
-echo "Cleaning up"
-cd /usr/local/src
-rm -rf
+ln -sf /home/osamunmun/.dotfiles/vim/vimfiles /home/osamunmun/.vim
+ln -sf /home/osamunmun/.dotfiles/vim/_vimrc /home/osamunmun/.vimrc
+ln -sf /home/osamunmun/.dotfiles/zshrc /home/osamunmun/.zshrc
+ln -sf /home/osamunmun/.dotfiles/gitconfig /home/osamunmun/.gitconfig
