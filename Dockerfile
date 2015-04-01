@@ -12,6 +12,7 @@ RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients
 RUN yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
 RUN yum -y install mysql-community-server
 RUN chkconfig mysqld on
+RUN mkdir /var/lock/subsys && chmod -R 777 /var/lock/subsys
 RUN service mysqld start
 
 #Install git
