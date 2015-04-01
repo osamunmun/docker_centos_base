@@ -57,6 +57,11 @@ RUN chown osamunmun:osamunmun /home/osamunmun/.ssh/github_rsa
 RUN localedef -f UTF-8 -i ja_JP ja_JP
 RUN cp /usr/share/zoneinfo/Japan /etc/localtime
 
+#setup develop dir
+RUN mkdir /home/osamunmun/apps
+RUN chown -R osamunmun:osamunmun /home/osamunmun/apps
+VOLUME /home/osamunmun/apps
+
 EXPOSE 22 3000
 
 # Plz exec after build below commnads. For now these commands should be execed by manyual.
