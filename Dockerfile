@@ -8,6 +8,12 @@ RUN echo prefer=ftp.iij.ad.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 #Install yum libs
 RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo man zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel gcc-c++ zlib readline readline-devel openssl ncurses-devel bzip2 zsh libyaml-devel libffi-devel gdbm-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker
 
+#Install MySQL
+RUN yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+RUN yum -y install mysql-community-server
+RUN chkconfig mysqld on
+RUN service mysqld start
+
 #Install git
 ADD install-git.sh /usr/local/src/install-git.sh
 RUN chmod +x /usr/local/src/install-git.sh
