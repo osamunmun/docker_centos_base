@@ -52,6 +52,8 @@ RUN sed -i 's/Defaults    requiretty/#Defaults    requiretty/g' /etc/sudoers
 #setup github publickey authentication
 ADD github_rsa /home/osamunmun/.ssh/github_rsa
 RUN chown osamunmun:osamunmun /home/osamunmun/.ssh/github_rsa
+ADD ssh/config /home/osamunmun/.ssh/config
+RUN chmod 600 /home/osamunmun/.ssh/config && chown osamunmun:osamunmun /home/osamunmun/.ssh/config
 
 #setup locale
 RUN localedef -f UTF-8 -i ja_JP ja_JP
@@ -69,5 +71,3 @@ EXPOSE 22 3000
 #RUN sudo -u osamunmun /usr/local/bin/vim -u /home/osamunmun/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q!     | endtry" -e -s -V1
 #RUN cd /home/osamunmun/.dotfiles/vim/bundle/vimproc
 #RUN sudo -u osamunmun make
-#RUN eval `ssh-agent`
-#RUN ssh-add /home/osamunmun/.ssh/github_rsa
