@@ -24,6 +24,7 @@ RUN /usr/local/src/install-git.sh
 ADD install-rbenv.sh /usr/local/src/install-rbenv.sh
 RUN chmod +x /usr/local/src/install-rbenv.sh
 RUN /usr/local/src/install-rbenv.sh
+RUN gem install spring
 
 #Install vim
 RUN yum install -y ruby-devel python-devel
