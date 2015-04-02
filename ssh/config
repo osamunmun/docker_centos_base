@@ -1,0 +1,4 @@
+Host github.com
+  StrictHostKeyChecking no
+  IdentityFile ~/.ssh/github_rsa
+  User osamunmun
