@@ -24,7 +24,11 @@ RUN /usr/local/src/install-git.sh
 ADD install-rbenv.sh /usr/local/src/install-rbenv.sh
 RUN chmod +x /usr/local/src/install-rbenv.sh
 RUN /usr/local/src/install-rbenv.sh
-RUN gem install spring
+RUN gem install json_pure
+RUN gem update --system
+RUN gem install spring bundler
+RUN gem pristine --all
+RUN rbenv rehash
 
 #Install vim
 RUN yum install -y ruby-devel python-devel
