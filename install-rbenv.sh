@@ -32,6 +32,9 @@ if [ ! -d /usr/local/rbenv ];then
     echo 'update: --no-ri --no-rdoc' >> /.gemrc
 
     # install bundler
-    gem install bundler
+    gem install bundler json_pure
+    gem update --system
+    gem install spring
+    gem pristine --all
     rbenv rehash
 fi
