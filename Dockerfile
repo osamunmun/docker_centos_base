@@ -69,7 +69,7 @@ RUN mkdir /home/osamunmun/apps
 RUN chown -R osamunmun:osamunmun /home/osamunmun/apps
 VOLUME /home/osamunmun/apps
 
-EXPOSE 22 3000
+EXPOSE 22 3000 35729
 
 # Plz exec after build below commnads. For now these commands should be execed by manyual.
 
