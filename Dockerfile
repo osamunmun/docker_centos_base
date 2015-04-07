@@ -6,7 +6,7 @@ RUN echo include_only=.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 RUN echo prefer=ftp.iij.ad.jp >> /etc/yum/pluginconf.d/fastestmirror.conf
 
 #Install yum libs
-RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo man zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel gcc-c++ zlib readline readline-devel openssl ncurses-devel bzip2 zsh libyaml-devel libffi-devel gdbm-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker patch sqlite-devel
+RUN yum install -y tar gcc make wget curl openssh openssh-server openssh-clients sudo man zlib-devel openssl-devel cpio expat-devel gettext-devel curl-devel gcc-c++ zlib readline readline-devel openssl ncurses-devel bzip2 zsh libyaml-devel libffi-devel gdbm-devel perl-ExtUtils-CBuilder perl-ExtUtils-MakeMaker patch sqlite-devel gcc-c++ flex bison gperf freetype-devel fontconfig-devel libicu-devel libpng-devel libjpeg-devel
 
 #Install MySQL
 RUN yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
@@ -62,6 +62,13 @@ RUN cp /usr/share/zoneinfo/Japan /etc/localtime
 RUN mkdir /home/osamunmun/apps
 RUN chown -R osamunmun:osamunmun /home/osamunmun/apps
 VOLUME /home/osamunmun/apps
+
+#setup PhantomJS
+RUN cd /usr/local/src
+RUN git clone git://github.com/ariya/phantomjs.git
+RUN cd phantomjs
+RUN git checkout 2.0
+RUN ./build.sh --confirm
 
 EXPOSE 22 3000 35729
 
