@@ -70,6 +70,9 @@ RUN cd phantomjs
 RUN git checkout 2.0
 RUN ./build.sh --confirm
 
+#setup guard environment
+RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
 EXPOSE 22 3000 35729
 
 # Plz exec after build below commnads. For now these commands should be execed by manyual.
