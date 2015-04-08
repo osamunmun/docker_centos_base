@@ -34,7 +34,7 @@ if [ ! -d /usr/local/rbenv ];then
     # install bundler
     gem install bundler json_pure
     gem update --system
-    gem install spring
+    gem install spring pry
     gem pristine --all
     rbenv rehash
 fi
