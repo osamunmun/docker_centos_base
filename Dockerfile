@@ -39,7 +39,6 @@ ADD setup-dotfiles.sh /usr/local/src/setup-dotfiles.sh
 RUN chmod +x /usr/local/src/setup-dotfiles.sh
 RUN /usr/local/src/setup-dotfiles.sh
 
-
 RUN /usr/bin/ssh-keygen -t rsa -b 2048 -f /etc/ssh/ssh_host_rsa_key -N ""
 RUN /usr/bin/ssh-keygen -t dsa -b 1024 -f /etc/ssh/ssh_host_dsa_key -N ""
 RUN /usr/bin/ssh-keygen -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key -N ""
@@ -72,6 +71,20 @@ RUN ./build.sh --confirm
 
 #setup guard environment
 RUN dbus-uuidgen > /var/lib/dbus/machine-id
+
+#Install tmux
+sudo wget https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz
+tar xvzf libevent-2.0.21-stable.tar.gz
+cd libevent-2.0.21-stable
+./configure
+make
+sudo make install
+wget http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz
+tar xvzf tmux-1.9a.tar.gz
+cd tmux-1.9a
+./configure
+make
+sudo make install
 
 EXPOSE 22 3000 35729
 
